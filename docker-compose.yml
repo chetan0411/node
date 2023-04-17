@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+  test:
+    image: test
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3000:3000
+
+  database:
+    image: mysql
+    restart: always
+    environment:
+       MYSQL_DATABASEL: 'database'
+       MYSQL_ROOT_PASSWORD: 'database'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'  
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080    
