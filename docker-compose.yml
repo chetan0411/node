@@ -9,7 +9,7 @@ services:
     environment:
       NODE_ENV: production
     ports:
-      - 127.0.0.1:3000:3000
+      - 3000:3000
 
   database:
     image: mysql
@@ -18,7 +18,7 @@ services:
        MYSQL_DATABASEL: 'database'
        MYSQL_ROOT_PASSWORD: 'database'
     ports:
-      - '3306:3306'
+      - 127.0.0.1:3306:3306
     expose:
       - '3306'  
 
@@ -26,4 +26,6 @@ services:
     image: adminer
     restart: always
     ports:
-      - 8000:8000    
+      - 127.0.0.1:8000:8000    
+    expose:
+      - 8000  
